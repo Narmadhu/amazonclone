@@ -23,7 +23,7 @@ function Header() {
       {/* 3 links */}
       <div className="header-nav">
         {/* link 1 */}
-        <Link to="/login" className="header-link">
+        <Link to="/" className="header-link">
           <div className="header-option">
             <span className="header-option-lineOne">Hello, Narmadhu </span>
             <span className="header-option-lineTwo">Sign In</span>

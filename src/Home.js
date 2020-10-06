@@ -31,14 +31,14 @@ function Home() {
           id="3"
           title="Laptop accessories"
           rate={4}
-          price={500}
+          price={380}
           img="/images/laptop.jpg"
         />
         <Product
           id="4"
           title="Clothing"
           rate={4}
-          price={600}
+          price={78}
           img="/images/fashion.jpg"
         />
         <Product

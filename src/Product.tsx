@@ -2,22 +2,22 @@ import React from "react";
 import "./Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
-import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "./redux/slice";
 
 function Product({ id, title, rate, price, img }) {
-  const [{}, dispatch] = useStateValue();
+  const dispatch = useDispatch();
 
   const addToBasket = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
+    dispatch(
+      addItemToCart({
         id: id,
         title: title,
         rate: rate,
         price: price,
         img: img,
-      },
-    });
+      })
+    );
   };
 
   return (

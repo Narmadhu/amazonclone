@@ -2,15 +2,13 @@ import React from "react";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
 import "./Checkoutproducts.css";
-import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import { removeItemToCart } from "./redux/slice";
 
 function Checkoutproducts({ id, title, rate, price, img }) {
-  const [{ basket }, dispatch] = useStateValue();
+  const dispatch = useDispatch();
   const RemoveFromTheBasket = () => {
-    dispatch({
-      type: "REMOVE_FROM_THE_BASKET",
-      id: id,
-    });
+    dispatch(removeItemToCart(id));
   };
   return (
     <div className="checkoutproducts">

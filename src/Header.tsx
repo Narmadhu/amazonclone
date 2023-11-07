@@ -3,11 +3,11 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
-import { useStateValue } from "./StateProvider";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 
 function Header() {
-  const [{ basket }] = useStateValue();
-  console.log(basket);
+  const basket = useSelector<RootState>((state) => state.basket);
 
   return (
     <nav className="header">

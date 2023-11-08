@@ -4,7 +4,7 @@ export interface BasketItem {
   id: string;
   title: string;
   rate: string;
-  price: string;
+  price: number;
   img: string;
 }
 
@@ -15,7 +15,6 @@ export interface InitialState {
 
 export const initialState: InitialState = {
   basket: [],
-  // user: null,
 };
 
 export const appSlice = createSlice({

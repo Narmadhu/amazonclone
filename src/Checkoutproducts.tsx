@@ -20,13 +20,13 @@ function Checkoutproducts({ id, title, rate, price, img }) {
           <strong>{price}</strong>
         </p>
         <div className="checkoutproduct-rate">
-          {Array(rate)
+          {/* {Array(rate)
             .fill()
             .map((_) => (
               <p>
                 <StarIcon style={{ color: yellow[400], fontSize: 22 }} />
               </p>
-            ))}
+            ))} */}
         </div>
         <button className="checkoutproduct-btn" onClick={RemoveFromTheBasket}>
           Remove from the cart

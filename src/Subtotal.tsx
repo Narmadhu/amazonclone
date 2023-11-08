@@ -4,9 +4,12 @@ import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import { BasketItem } from "./redux/slice";
 
 function Subtotal() {
-  const basket = useSelector<RootState>((state) => state.basket);
+  const basket = useSelector<RootState>(
+    (state) => state.basket
+  ) as BasketItem[];
   return (
     <div className="subtotal">
       <CurrencyFormat

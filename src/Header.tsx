@@ -5,9 +5,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import { BasketItem } from "./redux/slice";
 
 function Header() {
-  const basket = useSelector<RootState>((state) => state.basket);
+  const basket = useSelector<RootState>(
+    (state) => state.basket
+  ) as BasketItem[];
 
   return (
     <nav className="header">

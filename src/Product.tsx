@@ -29,13 +29,13 @@ function Product({ id, title, rate, price, img }) {
           <strong>{price}</strong>
         </p>
         <div className="product-rate">
-          {Array(rate)
+          {/* {Array(rate)
             .fill()
             .map((_) => (
               <p>
                 <StarIcon style={{ color: yellow[400], fontSize: 22 }} />
               </p>
-            ))}
+            ))} */}
         </div>
       </div>
 

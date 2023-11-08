@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "title": "Laptop accessories",
+    "rate": "4",
+    "price": 380,
+    "img": "/images/laptop.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Clothing",
+    "rate": "4",
+    "price": 78,
+    "img": "/images/fashion.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Watch",
+    "rate": "4",
+    "price": 500,
+    "img": "/images/watch.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Chocolate",
+    "rate": "3",
+    "price": 100,
+    "img": "/images/choco.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Egg Beater",
+    "rate": "3",
+    "price": 40,
+    "img": "/images/cooking.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Auriga Sheesham Wood Bed",
+    "rate": "5",
+    "price": 50,
+    "img": "/images/Bed.jpg"
+  }
+]

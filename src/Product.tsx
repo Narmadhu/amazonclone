@@ -2,22 +2,23 @@ import React from "react";
 import "./Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
-import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import { addItemToCart, updateItemsInCart } from "./redux/slice";
 
 function Product({ id, title, rate, price, img }) {
-  const [{}, dispatch] = useStateValue();
+  const dispatch = useDispatch();
 
   const addToBasket = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
+    dispatch(
+      addItemToCart({
         id: id,
         title: title,
         rate: rate,
         price: price,
         img: img,
-      },
-    });
+      })
+    );
+    dispatch(updateItemsInCart("add"));
   };
 
   return (
@@ -29,13 +30,13 @@ function Product({ id, title, rate, price, img }) {
           <strong>{price}</strong>
         </p>
         <div className="product-rate">
-          {Array(rate)
+          {/* {Array(rate)
             .fill()
             .map((_) => (
               <p>
                 <StarIcon style={{ color: yellow[400], fontSize: 22 }} />
               </p>
-            ))}
+            ))} */}
         </div>
       </div>
 

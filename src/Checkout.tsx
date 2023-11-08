@@ -10,6 +10,9 @@ function Checkout() {
   const basket = useSelector<RootState>(
     (state) => state.basket
   ) as BasketItem[];
+  const totalItems = useSelector<RootState>(
+    (state) => state.noOfItemsInCart
+  ) as number;
 
   return (
     <div className="checkout">
@@ -22,7 +25,9 @@ function Checkout() {
         ) : (
           <div>
             <h2 className="checkout-title">
-              Your basket contains {basket?.length} items
+              {`Your basket contains ${totalItems} ${
+                totalItems > 1 ? "items" : "item"
+              }`}
             </h2>
 
             {/* list of products */}
@@ -34,6 +39,7 @@ function Checkout() {
                 price={item.price}
                 rate={item.rate}
                 img={item.img}
+                noOfProducts={item.noOfProducts}
               />
             ))}
           </div>

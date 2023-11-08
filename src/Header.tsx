@@ -8,9 +8,9 @@ import { RootState } from "./redux/store";
 import { BasketItem } from "./redux/slice";
 
 function Header() {
-  const basket = useSelector<RootState>(
-    (state) => state.basket
-  ) as BasketItem[];
+  const totalItems = useSelector<RootState>(
+    (state) => state.noOfItemsInCart
+  ) as number;
 
   return (
     <nav className="header">
@@ -51,7 +51,7 @@ function Header() {
           <div className="header-optionBasket">
             <ShoppingBasketOutlinedIcon className="" />
             <span className="header-option-lineTwo header-basketCount">
-              {basket?.length}
+              {totalItems}
             </span>
           </div>
         </Link>

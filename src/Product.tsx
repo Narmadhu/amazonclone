@@ -3,7 +3,7 @@ import "./Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "./redux/slice";
+import { addItemToCart, updateItemsInCart } from "./redux/slice";
 
 function Product({ id, title, rate, price, img }) {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ function Product({ id, title, rate, price, img }) {
         img: img,
       })
     );
+    dispatch(updateItemsInCart("add"));
   };
 
   return (

@@ -1,24 +1,33 @@
 import React from "react";
-import { useStateValue } from "./StateProvider";
 import "./Checkout.css";
 import Checkoutproducts from "./Checkoutproducts";
 import Subtotal from "./Subtotal";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
+import { BasketItem } from "./redux/slice";
 
 function Checkout() {
-  const [{ basket }] = useStateValue();
+  const basket = useSelector<RootState>(
+    (state) => state.basket
+  ) as BasketItem[];
+  const totalItems = useSelector<RootState>(
+    (state) => state.noOfItemsInCart
+  ) as number;
 
   return (
     <div className="checkout">
       <div className="checkout-left">
         <img className="checkout-ad" src="/images/ad.jpg" alt="" />
-        {basket?.length === 0 ? (
+        {basket.length === 0 ? (
           <div>
             <h2 className="checkout-title">Your Basket is empty</h2>
           </div>
         ) : (
           <div>
             <h2 className="checkout-title">
-              Your basket contains {basket?.length} items
+              {`Your basket contains ${totalItems} ${
+                totalItems > 1 ? "items" : "item"
+              }`}
             </h2>
 
             {/* list of products */}
@@ -30,6 +39,7 @@ function Checkout() {
                 price={item.price}
                 rate={item.rate}
                 img={item.img}
+                noOfProducts={item.noOfProducts}
               />
             ))}
           </div>

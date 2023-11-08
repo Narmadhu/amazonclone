@@ -2,33 +2,35 @@ import React from "react";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
 import "./Checkoutproducts.css";
-import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import { removeItemToCart, updateItemsInCart } from "./redux/slice";
 
-function Checkoutproducts({ id, title, rate, price, img }) {
-  const [{ basket }, dispatch] = useStateValue();
+function Checkoutproducts({ id, title, rate, price, img, noOfProducts }) {
+  const dispatch = useDispatch();
   const RemoveFromTheBasket = () => {
-    dispatch({
-      type: "REMOVE_FROM_THE_BASKET",
-      id: id,
-    });
+    dispatch(removeItemToCart(id));
+    dispatch(updateItemsInCart("remove"));
   };
   return (
     <div className="checkoutproducts">
       <img className="checkoutproduct-img" src={img} alt="" />
       <div className="checkoutproduct-info">
-        <p className="checkoutproduct-title">{title}</p>
+        <p className="checkoutproduct-title">
+          {title}
+          {noOfProducts > 1 && ` (${noOfProducts})`}
+        </p>
         <p className="checkoutproduct-price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
         <div className="checkoutproduct-rate">
-          {Array(rate)
+          {/* {Array(rate)
             .fill()
             .map((_) => (
               <p>
                 <StarIcon style={{ color: yellow[400], fontSize: 22 }} />
               </p>
-            ))}
+            ))} */}
         </div>
         <button className="checkoutproduct-btn" onClick={RemoveFromTheBasket}>
           Remove from the cart

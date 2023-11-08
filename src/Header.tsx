@@ -3,11 +3,14 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
-import { useStateValue } from "./StateProvider";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
+import { BasketItem } from "./redux/slice";
 
 function Header() {
-  const [{ basket }] = useStateValue();
-  console.log(basket);
+  const totalItems = useSelector<RootState>(
+    (state) => state.noOfItemsInCart
+  ) as number;
 
   return (
     <nav className="header">
@@ -48,7 +51,7 @@ function Header() {
           <div className="header-optionBasket">
             <ShoppingBasketOutlinedIcon className="" />
             <span className="header-option-lineTwo header-basketCount">
-              {basket?.length}
+              {totalItems}
             </span>
           </div>
         </Link>

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
-import { BasketItem } from "./redux/slice";
+import { RootState } from "../../redux/store/store";
 
 function Header() {
   const totalItems = useSelector<RootState>(
@@ -26,7 +25,7 @@ function Header() {
       {/* 3 links */}
       <div className="header-nav">
         {/* link 1 */}
-        <Link to="/" className="header-link">
+        <Link to="/login" className="header-link">
           <div className="header-option">
             <span className="header-option-lineOne">Hello, Narmadhu </span>
             <span className="header-option-lineTwo">Sign In</span>

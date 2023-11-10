@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
-import Product from "./Product";
-import ProductData from "./data/product.json";
+import Product from "../product/Product";
+import ProductData from "../../data/product.json";
 
 function Home() {
   return (

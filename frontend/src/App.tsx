@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import Home from "./Home";
-import Checkout from "./Checkout";
-import { store } from "./redux/store";
+import Header from "./components/header/Header";
+import Home from "./components/home/Home";
+import Checkout from "./components/checkout/Checkout";
+import { store } from "./redux/store/store";
 import { Provider } from "react-redux";
-import Loginpage from "./Loginpage";
+import Loginpage from "./components/login/Loginpage";
+import SignupPage from "./components/signup/SignUp";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Loginpage />
+            </Route>
+            <Route path="/signup">
+              <SignupPage />
             </Route>
             <Route path="/checkout">
               <Checkout />

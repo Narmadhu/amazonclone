@@ -1,10 +1,10 @@
 import React from "react";
 import "./Checkout.css";
-import Checkoutproducts from "./Checkoutproducts";
-import Subtotal from "./Subtotal";
+import Checkoutproducts from "../checkoutproducts/Checkoutproducts";
+import Subtotal from "../subTotal/Subtotal";
 import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
-import { BasketItem } from "./redux/slice";
+import { RootState } from "../../redux/store/store";
+import { BasketItem } from "../../redux/slice/slice";
 
 function Checkout() {
   const basket = useSelector<RootState>(

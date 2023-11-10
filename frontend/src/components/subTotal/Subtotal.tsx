@@ -2,9 +2,9 @@ import React from "react";
 import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
-import { BasketItem } from "./redux/slice";
-import { getBasketTotal } from "./common/common";
+import { RootState } from "../../redux/store/store";
+import { BasketItem } from "../../redux/slice/slice";
+import { getBasketTotal } from "../../common/common";
 
 function Subtotal() {
   const basket = useSelector<RootState>(

@@ -33,7 +33,7 @@ function SignupPage() {
       });
     } else {
       try {
-        const res = await fetch("http://localhost:8000/signup", {
+        const res = await fetch("https://e-commerce-demo-vesl.onrender.com/signup", {
           method: "POST",
           body: JSON.stringify(user),
           headers: { "Content-Type": "application/json" },

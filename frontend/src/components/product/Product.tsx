@@ -3,9 +3,9 @@ import "./Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
 import { useDispatch } from "react-redux";
-import { addItemToCart, updateItemsInCart } from "../../redux/slice/slice";
+import { addItemToCart, updateItemsInCart } from "../../redux/slice/cartSlice";
 
-function Product({ id, title, rate, price, img }) {
+function Product({ id, title, rating, rate, img }) {
   const dispatch = useDispatch();
 
   const addToBasket = () => {
@@ -13,8 +13,8 @@ function Product({ id, title, rate, price, img }) {
       addItemToCart({
         id: id,
         title: title,
+        rating: rating,
         rate: rate,
-        price: price,
         img: img,
       })
     );
@@ -25,12 +25,12 @@ function Product({ id, title, rate, price, img }) {
     <div className="product">
       <div className="product-info">
         <p>{title}</p>
-        <p className="product-price">
+        <p className="product-rate">
           <small>$</small>
-          <strong>{price}</strong>
+          <strong>{rate}</strong>
         </p>
-        <div className="product-rate">
-          {/* {Array(rate)
+        <div className="product-rating">
+          {/* {Array(rating)
             .fill()
             .map((_) => (
               <p>

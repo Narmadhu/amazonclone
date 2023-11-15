@@ -3,16 +3,29 @@ import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
-import { BasketItem } from "../../redux/slice/slice";
+import { BasketItem } from "../../redux/slice/cartSlice";
 import { getBasketTotal } from "../../common/common";
 
 function Subtotal() {
   const basket = useSelector<RootState>(
-    (state) => state.basket
+    (state) => state.Cart.basket
   ) as BasketItem[];
   const totalItems = useSelector<RootState>(
-    (state) => state.noOfItemsInCart
+    (state) => state.Cart.noOfItemsInCart
   ) as number;
+
+  const handlePayment = async () => {
+    const response = await fetch("http://localhost:8000/payment", {
+      method: "POST",
+      body: JSON.stringify(basket),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    if (data.url) {
+      window.location.assign(data.url);
+    }
+  };
+
   return (
     <div className="subtotal">
       <CurrencyFormat
@@ -33,7 +46,7 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-      <button>Proceed to checkout</button>
+      <button onClick={handlePayment}>Pay now</button>
     </div>
   );
 }

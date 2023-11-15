@@ -3,8 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface BasketItem {
   id: string;
   title: string;
-  rate: string;
-  price: number;
+  rating: string;
+  rate: number;
   img: string;
   noOfProducts?: number;
 }
@@ -12,7 +12,6 @@ export interface BasketItem {
 export interface InitialState {
   basket: BasketItem[];
   noOfItemsInCart: number;
-  // user: null,
 }
 
 export const initialState: InitialState = {
@@ -20,7 +19,7 @@ export const initialState: InitialState = {
   noOfItemsInCart: 0,
 };
 
-export const appSlice = createSlice({
+export const cartSlice = createSlice({
   name: "itemInCart",
   initialState,
   reducers: {
@@ -97,6 +96,6 @@ export const appSlice = createSlice({
 });
 
 export const { addItemToCart, removeItemToCart, updateItemsInCart } =
-  appSlice.actions;
+  cartSlice.actions;
 
-export default appSlice.reducer;
+export default cartSlice.reducer;

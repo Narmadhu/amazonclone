@@ -1,44 +1,44 @@
 [
   {
-    "id": "1",
+    "id": "price_1OB9rVSCVuBst6J1P9ti7yqg",
     "title": "Laptop accessories",
-    "rate": "4",
-    "price": 380,
+    "rating": "4",
+    "rate": 380,
     "img": "/images/laptop.jpg"
   },
   {
-    "id": "2",
+    "id": "price_1OB9t1SCVuBst6J1SIE2uhbf",
     "title": "Clothing",
-    "rate": "4",
-    "price": 78,
+    "rating": "4",
+    "rate": 78,
     "img": "/images/fashion.jpg"
   },
   {
-    "id": "3",
+    "id": "price_1OB9tmSCVuBst6J1LXOyL5KE",
     "title": "Watch",
-    "rate": "4",
-    "price": 500,
+    "rating": "4",
+    "rate": 500,
     "img": "/images/watch.jpg"
   },
   {
-    "id": "4",
+    "id": "price_1OB9u5SCVuBst6J1F46SDFPp",
     "title": "Chocolate",
-    "rate": "3",
-    "price": 100,
+    "rating": "3",
+    "rate": 100,
     "img": "/images/choco.jpg"
   },
   {
-    "id": "5",
+    "id": "price_1OB9ugSCVuBst6J1JXc7ISt4",
     "title": "Egg Beater",
-    "rate": "3",
-    "price": 40,
+    "rating": "3",
+    "rate": 40,
     "img": "/images/cooking.jpg"
   },
   {
-    "id": "6",
+    "id": "price_1OB9uxSCVuBst6J1zyiLfbrw",
     "title": "Auriga Sheesham Wood Bed",
-    "rate": "5",
-    "price": 50,
+    "rating": "5",
+    "rate": 50,
     "img": "/images/Bed.jpg"
   }
 ]

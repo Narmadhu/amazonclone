@@ -17,8 +17,8 @@ function Home() {
             key={product.id}
             id={product.id}
             title={product.title}
+            rating={product.rating}
             rate={product.rate}
-            price={product.price}
             img={product.img}
           />
         ))}

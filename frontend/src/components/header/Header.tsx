@@ -8,8 +8,13 @@ import { RootState } from "../../redux/store/store";
 
 function Header() {
   const totalItems = useSelector<RootState>(
-    (state) => state.noOfItemsInCart
+    (state) => state.Cart.noOfItemsInCart
   ) as number;
+
+  const loggedUser = useSelector<RootState>(
+    (state) => state.User.user
+  ) as string;
+  console.log({ loggedUser });
 
   return (
     <nav className="header">
@@ -25,12 +30,18 @@ function Header() {
       {/* 3 links */}
       <div className="header-nav">
         {/* link 1 */}
-        <Link to="/login" className="header-link">
-          <div className="header-option">
-            <span className="header-option-lineOne">Hello, Narmadhu </span>
-            <span className="header-option-lineTwo">Sign In</span>
-          </div>
-        </Link>
+        {loggedUser ? (
+          <span className="header-option-lineTwo header-link">
+            {`Hello, ${loggedUser}`}
+          </span>
+        ) : (
+          <Link to="/login" className="header-link">
+            <div className="header-option">
+              <span className="header-option-lineTwo">Sign In</span>
+            </div>
+          </Link>
+        )}
+
         {/* link 2 */}
         <Link to="/" className="header-link">
           <div className="header-option">
@@ -39,12 +50,12 @@ function Header() {
           </div>
         </Link>
         {/* link 3 */}
-        <Link to="/" className="header-link">
+        {/* <Link to="/" className="header-link">
           <div className="header-option">
             <span className="header-option-lineOne">Your</span>
             <span className="header-option-lineTwo">Prime</span>
           </div>
-        </Link>
+        </Link> */}
         {/* link 4 */}
         <Link to="/checkout" className="header-link">
           <div className="header-optionBasket">

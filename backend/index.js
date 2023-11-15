@@ -1,25 +1,57 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import { Stripe } from "stripe";
 import userRouter from "./router/userRouter.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
-
-// middleware for parsing the req.body
-app.use(express.json());
+const stripe = new Stripe(process.env.SECRETKEY, {
+  apiVersion: "2020-08-27",
+});
 
 // middleware for CORS
 app.use(cors());
+app.use(express.static("public"));
+// middleware for parsing the req.body
+app.use(express.json());
+// routers
+app.use("/", userRouter);
 
-app.get("/", (req, res) => {
-  return res.status(200).send("Hello");
+app.get("/payment/success", (req, res) => {
+  res.send("Your payment is successful");
 });
 
-app.use("/", userRouter);
+app.post("/payment", async (req, res) => {
+  const productItems = req.body;
+  let newProducts = productItems.map((item) => {
+    return {
+      price: item.id,
+      quantity: item.noOfProducts,
+    };
+  });
+  const session = await stripe.checkout.sessions.create({
+    line_items: newProducts,
+    mode: "payment",
+    success_url: "http://localhost:8000/payment/success",
+    cancel_url: "http://localhost:8000/payment/cancel",
+  });
+  console.log({ session });
+  res.send(
+    JSON.stringify({
+      url: session.url,
+    })
+  );
+});
 
 mongoose
   .connect(
-    "mongodb+srv://narmadhu:04je2uSxCNhVqJYy@logincredentials.jqmkqxl.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://" +
+      process.env.NAME +
+      ":" +
+      process.env.MONGODB_PASSWORD +
+      "@logincredentials.jqmkqxl.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(8000, () => {

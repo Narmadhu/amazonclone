@@ -4,14 +4,14 @@ import Checkoutproducts from "../checkoutproducts/Checkoutproducts";
 import Subtotal from "../subTotal/Subtotal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
-import { BasketItem } from "../../redux/slice/slice";
+import { BasketItem } from "../../redux/slice/cartSlice";
 
 function Checkout() {
   const basket = useSelector<RootState>(
-    (state) => state.basket
+    (state) => state.Cart.basket
   ) as BasketItem[];
   const totalItems = useSelector<RootState>(
-    (state) => state.noOfItemsInCart
+    (state) => state.Cart.noOfItemsInCart
   ) as number;
 
   return (
@@ -36,8 +36,8 @@ function Checkout() {
                 key={item.id}
                 id={item.id}
                 title={item.title}
-                price={item.price}
                 rate={item.rate}
+                rating={item.rating}
                 img={item.img}
                 noOfProducts={item.noOfProducts}
               />

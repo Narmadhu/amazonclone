@@ -4,14 +4,13 @@ import { User } from "../models/userModal.js";
 const router = express.Router();
 router.post("/signup", async (req, res) => {
   try {
-    if (!req.body.username || !req.body.password) {
-      return res.status(400).send({ message: "Please fill all fields" });
-    }
+    // if (!req.body.username || !req.body.password) {
+    //   return res.status(400).send({ message: "Please fill all fields" });
+    // }
     const { username, password } = req.body;
     const findUser = await User.find({ username, password });
     if (findUser.length) {
-      res.status(500).send({ message: "Already Registered" });
-      // res.redirect("/login");
+      res.status(500).send({ message: "Already Registered. Please login!" });
     } else {
       await User.create({ username, password });
       res.status(200).send({ message: "Successfully Registered" });
@@ -26,21 +25,18 @@ router.post("/login", async (req, res) => {
 
   try {
     const findUser = await User.find({ username });
-    // console.log(findUser);
-    // console.log(findUser.password !== password);
-    // console.log(findUser.username !== password);
     if (!username || !password) {
-      return res.status(400).send({ message: "PLease fill all details" });
+      return res.status(400).send({ message: "Please fill all details" });
     } else if (findUser.length && findUser[0].password !== password) {
-      res.status(500).send({ message: "Invalid Credentials!" });
+      res.status(500).send({ message: "Invalid credentials!" });
     } else if (
       findUser.length &&
       findUser[0].username === username &&
       findUser[0].password === password
     ) {
-      return res.status(200).send({ message: "Successfully Logged In!" });
+      return res.status(200).send({ message: "Successfully logged in!" });
     } else {
-      res.status(500).send({ message: "Not yet Signed Up!" });
+      res.status(500).send({ message: "Not yet signed up. Please signup!" });
     }
 
     // return res.redirect("/signup");

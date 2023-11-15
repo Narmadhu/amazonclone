@@ -3,9 +3,9 @@ import StarIcon from "@material-ui/icons/Star";
 import { yellow } from "@material-ui/core/colors";
 import "./Checkoutproducts.css";
 import { useDispatch } from "react-redux";
-import { removeItemToCart, updateItemsInCart } from "../../redux/slice/slice";
+import { removeItemToCart, updateItemsInCart } from "../../redux/slice/cartSlice";
 
-function Checkoutproducts({ id, title, rate, price, img, noOfProducts }) {
+function Checkoutproducts({ id, title, rating, rate, img, noOfProducts }) {
   const dispatch = useDispatch();
   const RemoveFromTheBasket = () => {
     dispatch(removeItemToCart(id));
@@ -19,12 +19,12 @@ function Checkoutproducts({ id, title, rate, price, img, noOfProducts }) {
           {title}
           {noOfProducts > 1 && ` (${noOfProducts})`}
         </p>
-        <p className="checkoutproduct-price">
+        <p className="checkoutproduct-rate">
           <small>$</small>
-          <strong>{price}</strong>
+          <strong>{rate}</strong>
         </p>
-        <div className="checkoutproduct-rate">
-          {/* {Array(rate)
+        <div className="checkoutproduct-rating">
+          {/* {Array(rating)
             .fill()
             .map((_) => (
               <p>

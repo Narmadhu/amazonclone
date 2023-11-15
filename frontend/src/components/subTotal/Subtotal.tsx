@@ -15,7 +15,7 @@ function Subtotal() {
   ) as number;
 
   const handlePayment = async () => {
-    const response = await fetch("http://localhost:8000/payment", {
+    const response = await fetch("https://e-commerce-demo-vesl.onrender.com/payment", {
       method: "POST",
       body: JSON.stringify(basket),
       headers: { "Content-Type": "application/json" },

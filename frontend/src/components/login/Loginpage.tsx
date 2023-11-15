@@ -39,11 +39,14 @@ function Loginpage() {
       });
     } else {
       try {
-        const res = await fetch("http://localhost:8000/login", {
-          method: "POST",
-          body: JSON.stringify(user),
-          headers: { "Content-Type": "application/json" },
-        });
+        const res = await fetch(
+          "https://e-commerce-demo-vesl.onrender.com/login",
+          {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         const data = await res.json();
         setUser({ username: "", password: "" });
         if (res.status === 200) {

@@ -34,8 +34,8 @@ app.post("/payment", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: newProducts,
     mode: "payment",
-    success_url: "http://localhost:8000/payment/success",
-    cancel_url: "http://localhost:8000/payment/cancel",
+    success_url: "https://e-commerce-demo-vesl.onrender.com/success",
+    cancel_url: "https://e-commerce-demo-vesl.onrender.com/cancel",
   });
   console.log({ session });
   res.send(

@@ -23,6 +23,10 @@ app.get("/payment/success", (req, res) => {
   res.send("Your payment is successful");
 });
 
+app.get("/payment/cancel", (req, res) => {
+  res.send("Your payment Cancelled");
+});
+
 app.post("/payment", async (req, res) => {
   const productItems = req.body;
   let newProducts = productItems.map((item) => {
@@ -34,8 +38,8 @@ app.post("/payment", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: newProducts,
     mode: "payment",
-    success_url: "https://e-commerce-demo-vesl.onrender.com/success",
-    cancel_url: "https://e-commerce-demo-vesl.onrender.com/cancel",
+    success_url: "https://e-commerce-demo-vesl.onrender.com/payment/success",
+    cancel_url: "https://e-commerce-demo-vesl.onrender.com/payment/cancel",
   });
   console.log({ session });
   res.send(

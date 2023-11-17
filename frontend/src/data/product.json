@@ -38,7 +38,21 @@
     "id": "price_1OB9uxSCVuBst6J1zyiLfbrw",
     "title": "Auriga Sheesham Wood Bed",
     "rating": "5",
-    "rate": 50,
+    "rate": 120,
     "img": "/images/Bed.jpg"
+  },
+  {
+    "id": "price_1ODJfvSCVuBst6J1NBxIXO0C",
+    "title": "Dumbells",
+    "rating": "5",
+    "rate": 90,
+    "img": "/images/dumbell.jpg"
+  },
+  {
+    "id": "price_1ODJgTSCVuBst6J1KIou3XLH",
+    "title": "Sweater",
+    "rating": "5",
+    "rate": 7,
+    "img": "/images/sweater.jpg"
   }
 ]

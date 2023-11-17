@@ -15,15 +15,16 @@ function Checkout() {
   ) as number;
 
   return (
-    <div className="checkout">
-      <div className="checkout-left">
-        <img className="checkout-ad" src="/images/ad.jpg" alt="" />
-        {basket.length === 0 ? (
-          <div>
-            <h2 className="checkout-title">Your Basket is empty</h2>
-          </div>
-        ) : (
-          <div>
+    // <div className="checkout">
+    <>
+      {/* <img className="checkout-ad" src="/images/ad.jpg" alt="" /> */}
+      {basket.length === 0 ? (
+        <div>
+          <h2 className="checkout-title">Your Basket is empty</h2>
+        </div>
+      ) : (
+        <div className="checkout">
+          <div className="checkout-left">
             <h2 className="checkout-title">
               {`Your basket contains ${totalItems} ${
                 totalItems > 1 ? "items" : "item"
@@ -43,14 +44,12 @@ function Checkout() {
               />
             ))}
           </div>
-        )}
-      </div>
-      {basket.length > 0 && (
-        <div className="checkout-right">
-          <Subtotal />
+          <div className="checkout-right">
+            <Subtotal />
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

@@ -14,7 +14,6 @@ function Header() {
   const loggedUser = useSelector<RootState>(
     (state) => state.User.user
   ) as string;
-  console.log({ loggedUser });
 
   return (
     <nav className="header">
@@ -31,32 +30,31 @@ function Header() {
       <div className="header-nav">
         {/* link 1 */}
         {loggedUser ? (
-          <span className="header-option-lineTwo header-link">
-            {`Hello, ${loggedUser}`}
-          </span>
+          <div className="header-option">
+            <span className="header-option-lineOne" style={{ color: "white" }}>
+              Hello,
+            </span>
+            <span className="header-option-lineTwo header-link">
+              {loggedUser}
+            </span>
+          </div>
         ) : (
-          <Link to="/login" className="header-link">
-            <div className="header-option">
-              <span className="header-option-lineTwo">Sign In</span>
-            </div>
-          </Link>
+          <div className="header-option">
+            <Link to="/login" className="header-link">
+              <span className="header-option-lineOne">LOG IN</span>
+            </Link>
+          </div>
         )}
 
         {/* link 2 */}
-        <Link to="/" className="header-link">
+        {/* <Link to="/" className="header-link">
           <div className="header-option">
             <span className="header-option-lineOne">Returns</span>
             <span className="header-option-lineTwo"> & Orders</span>
           </div>
-        </Link>
-        {/* link 3 */}
-        {/* <Link to="/" className="header-link">
-          <div className="header-option">
-            <span className="header-option-lineOne">Your</span>
-            <span className="header-option-lineTwo">Prime</span>
-          </div>
         </Link> */}
-        {/* link 4 */}
+
+        {/* link 3 */}
         <Link to="/checkout" className="header-link">
           <div className="header-optionBasket">
             <ShoppingBasketOutlinedIcon className="" />

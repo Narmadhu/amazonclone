@@ -1,21 +1,37 @@
 .checkout {
-  display: flex;
-  height: max-content;
-  background-color: white;
-  padding: 20px;
-}
-.checkout-left {
-  flex: 1;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
 }
 .checkout-title {
   padding: 10px;
   margin-right: 10px;
   border-bottom: 1px solid lightgray;
 }
-
 .checkout-ad {
   width: 100%;
   max-height: 200px;
   min-width: 100px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 650px) {
+  .checkout {
+    grid-template-areas:
+      "a"
+      "b";
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  .checkout-left {
+    grid-area: b;
+  }
+  .checkout-right {
+    grid-area: a;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+  }
 }

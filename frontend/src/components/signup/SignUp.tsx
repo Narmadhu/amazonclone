@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import SignupLoginForm from "../SignupLoginForm";
+import SignupLoginForm from "../SignupLogin/SignupLoginForm";
 import SnackBar from "../materialui/SnackBar";
 
 function SignupPage() {
@@ -22,6 +22,7 @@ function SignupPage() {
     severity: undefined,
     msg: "",
   });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const signupHandler = async (event: React.MouseEvent) => {
     event.preventDefault();
@@ -33,6 +34,7 @@ function SignupPage() {
       });
     } else {
       try {
+        setLoading(true);
         const res = await fetch("https://e-commerce-demo-vesl.onrender.com/signup", {
           method: "POST",
           body: JSON.stringify(user),
@@ -40,18 +42,25 @@ function SignupPage() {
         });
         const data = await res.json();
         setUser({ username: "", password: "" });
+        setLoading(false);
+
         if (res.status === 200) {
           setSnackbar({ open: true, severity: "success", msg: data.message });
-          // setOpenSnackbar(true);
           setTimeout(() => {
             history.push("/login");
           }, 2000);
         } else {
           setSnackbar({ open: true, severity: "error", msg: data.message });
-
-          // setOpenSnackbar(true);
+          if (data.userType.toLowerCase() === "existinguser") {
+            setTimeout(() => {
+              history.push("/login");
+            }, 2000);
+          }
         }
-      } catch (error) {
+      } catch (error: any) {
+        setUser({ username: "", password: "" });
+        setLoading(false);
+        // setSnackbar({ open: true, severity: "error", msg: error });
         console.log(error);
       }
     }
@@ -73,6 +82,7 @@ function SignupPage() {
         onClickHandler={signupHandler}
         btnName="Signup"
         err={err}
+        loading={loading}
       />
       <SnackBar
         openSnackbar={snackbar.open}

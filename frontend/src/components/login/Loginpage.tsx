@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import SignupLoginForm from "../SignupLoginForm";
-import "./Loginpage.css";
+import SignupLoginForm from "../SignupLogin/SignupLoginForm";
 import { updateUser } from "../../redux/slice/userSlice";
 import { useDispatch } from "react-redux";
 import SnackBar from "../materialui/SnackBar";
@@ -26,11 +25,10 @@ function Loginpage() {
     severity: undefined,
     msg: "",
   });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const loginHandler = async (event: React.MouseEvent) => {
     event.preventDefault();
-    console.log(user.username.length);
-
     if (!user.username.length || !user.password.length) {
       setErr({
         ...err,
@@ -39,6 +37,7 @@ function Loginpage() {
       });
     } else {
       try {
+        setLoading(true);
         const res = await fetch(
           "https://e-commerce-demo-vesl.onrender.com/login",
           {
@@ -49,6 +48,8 @@ function Loginpage() {
         );
         const data = await res.json();
         setUser({ username: "", password: "" });
+        setLoading(false);
+
         if (res.status === 200) {
           dispatch(updateUser(user.username));
           setSnackbar({ open: true, severity: "success", msg: data.message });
@@ -57,8 +58,16 @@ function Loginpage() {
           }, 2000);
         } else {
           setSnackbar({ open: true, severity: "error", msg: data.message });
+          if (data.userType.toLowerCase() === "newuser") {
+            setTimeout(() => {
+              history.push("/signup");
+            }, 2000);
+          }
         }
       } catch (error) {
+        setLoading(false);
+        setUser({ username: "", password: "" });
+
         console.log(error);
       }
     }
@@ -80,6 +89,7 @@ function Loginpage() {
         onClickHandler={loginHandler}
         btnName="Login"
         err={err}
+        loading={loading}
       />
       <SnackBar
         openSnackbar={snackbar.open}
